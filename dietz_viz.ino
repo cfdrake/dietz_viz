@@ -16,8 +16,8 @@
  *   more data could be stored by using PROGMEM but this is already sufficient to encode more
  *   patterns than I originally began with. These are really bitfields so they could be quite
  *   compact.
- * - Started with tile_size = 8, but 16 seems better viewed when afar and makes the patterns
- *   more recognizable.
+ * - Started with tile_size = 8, but 16 seems better when viewed from afar and makes the
+ *   patterns more recognizable.
  */
 
 #include <Adafruit_ILI9341.h>
