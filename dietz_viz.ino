@@ -31,7 +31,7 @@ const int tile_size = 16;
 const int tile_line_spacing = 4;
 const int tile_drawing_delay = 10;  // ms (for each line in pattern)
 const int tile_drawing_color = ILI9341_WHITE;
-const int pattern_drawing_delay = (1000 * 10);  // ms (for each finished pattern)
+const int pattern_drawing_delay = (1000 * 15);  // ms (for each finished pattern)
 
 // Pattern data.
 const int num_patterns = 9;
