@@ -10,6 +10,12 @@
  * Todos:
  * - Look into disabling LED backlights.
  *   See: https://learn.adafruit.com/adafruit-2-8-tft-touch-shield-v2/backlight-touch-irq
+ *   
+ * Notes:
+ * - Reclaimed much space by switching from int[][] to char[][] for pattern data. Potentially
+ *   more data could be stored by using PROGMEM but this is already sufficient to encode more
+ *   patterns than I originally began with. These are really bitfields so they could be quite
+ *   compact.
  */
 
 #include <Adafruit_ILI9341.h>
