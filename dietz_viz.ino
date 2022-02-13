@@ -8,9 +8,6 @@
  * - ILI9341 OLED screen (Adafruit shield available)
  * 
  * Todos:
- * - Adding (a + b + c) ^ 3 brings system to 99% of dynamic memory, and unable to deploy.
- *   Need to look into PROGMEM potentially to store more data.
- *   See: https://www.arduino.cc/reference/en/language/variables/utilities/progmem/
  * - Look into disabling LED backlights.
  *   See: https://learn.adafruit.com/adafruit-2-8-tft-touch-shield-v2/backlight-touch-irq
  */
@@ -29,9 +26,9 @@ const int tile_drawing_color = ILI9341_WHITE;
 const int pattern_drawing_delay = (1000 * 10);  // ms (for each finished pattern)
 
 // Pattern data.
-const int num_patterns = 6;
+const int num_patterns = 7;
 const int max_pattern_length = 128;
-const int patterns[num_patterns][max_pattern_length] = {
+const char patterns[num_patterns][max_pattern_length] = {
   // (a + b)
   {0, 1},
   // (a + b) ^ 2
@@ -45,7 +42,7 @@ const int patterns[num_patterns][max_pattern_length] = {
   // (a + b + c) ^ 2
   {0, 0, 1, 0, 2, 0, 1, 1, 1, 2, 1, 2, 2, 2},
   // (a + b + c) ^ 3
-  // {0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 2, 0, 0, 2, 0, 0, 2, 0, 2, 2, 0, 2, 2, 0, 2, 2, 1, 2, 2, 1, 2, 2, 1, 2, 2, 0, 1, 1, 0, 1, 1, 0, 1, 1, 2, 2, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 2, 2, 2}
+  {0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 2, 0, 0, 2, 0, 0, 2, 0, 2, 2, 0, 2, 2, 0, 2, 2, 1, 2, 2, 1, 2, 2, 1, 2, 2, 0, 1, 1, 0, 1, 1, 0, 1, 1, 2, 2, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 2, 2, 2}
 };
 const int pattern_lengths[num_patterns] = {
   2,
@@ -54,7 +51,7 @@ const int pattern_lengths[num_patterns] = {
   64,
   3,
   14,
-  //81
+  81
 };
 
 void setup() {
