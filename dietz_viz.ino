@@ -16,6 +16,8 @@
  *   more data could be stored by using PROGMEM but this is already sufficient to encode more
  *   patterns than I originally began with. These are really bitfields so they could be quite
  *   compact.
+ * - Started with tile_size = 8, but 16 seems better viewed when afar and makes the patterns
+ *   more recognizable.
  */
 
 #include <Adafruit_ILI9341.h>
@@ -25,7 +27,7 @@
 Adafruit_ILI9341 tft = Adafruit_ILI9341(10, 9);
 
 // Drawing constants.
-const int tile_size = 8;
+const int tile_size = 16;
 const int tile_line_spacing = 4;
 const int tile_drawing_delay = 10;  // ms (for each line in pattern)
 const int tile_drawing_color = ILI9341_WHITE;
