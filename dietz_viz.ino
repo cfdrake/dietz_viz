@@ -24,9 +24,9 @@ Adafruit_ILI9341 tft = Adafruit_ILI9341(10, 9);
 // Drawing constants.
 const int tile_size = 8;
 const int tile_line_spacing = 4;
-const int tile_drawing_delay = 10;  // ms
+const int tile_drawing_delay = 10;  // ms (for each line in pattern)
 const int tile_drawing_color = ILI9341_WHITE;
-const int pattern_drawing_delay = (1000 * 10);  // ms
+const int pattern_drawing_delay = (1000 * 10);  // ms (for each finished pattern)
 
 // Pattern data.
 const int num_patterns = 6;
@@ -82,8 +82,6 @@ void loop() {
           c(x, y);
         }
 
-        delay(tile_drawing_delay);  // Note: per tile.
-
         // Increment pattern index.
         pattern_index++;
       }
@@ -98,15 +96,18 @@ void loop() {
 void a(int x, int y) {
   for (int i = 0; i < tile_size; i += tile_line_spacing) {
     tft.drawLine(x, y + i, x + tile_size, y + i, tile_drawing_color);
+    delay(tile_drawing_delay);
   }
 }
 
 void b(int x, int y) {
   for (int i = 0; i < tile_size; i += tile_line_spacing) {
     tft.drawLine(x + i, y, x + i, y + tile_size, tile_drawing_color);
+    delay(tile_drawing_delay);
   }
 }
 
 void c(int x, int y) {
   tft.drawLine(x, y, x + tile_size, y + tile_size, tile_drawing_color);
+  delay(tile_drawing_delay);
 }
