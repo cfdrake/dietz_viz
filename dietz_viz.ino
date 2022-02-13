@@ -14,8 +14,7 @@
  * Notes:
  * - Reclaimed much space by switching from int[][] to char[][] for pattern data. Potentially
  *   more data could be stored by using PROGMEM but this is already sufficient to encode more
- *   patterns than I originally began with. These are really bitfields so they could be quite
- *   compact.
+ *   patterns than I originally began with.
  * - Started with tile_size = 8, but 16 seems better when viewed from afar and makes the
  *   patterns more recognizable.
  */
