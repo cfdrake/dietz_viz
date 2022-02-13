@@ -32,7 +32,7 @@ const int tile_drawing_color = ILI9341_WHITE;
 const int pattern_drawing_delay = (1000 * 10);  // ms (for each finished pattern)
 
 // Pattern data.
-const int num_patterns = 7;
+const int num_patterns = 9;
 const int max_pattern_length = 128;
 const char patterns[num_patterns][max_pattern_length] = {
   // (a + b)
@@ -48,7 +48,11 @@ const char patterns[num_patterns][max_pattern_length] = {
   // (a + b + c) ^ 2
   {0, 0, 1, 0, 2, 0, 1, 1, 1, 2, 1, 2, 2, 2},
   // (a + b + c) ^ 3
-  {0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 2, 0, 0, 2, 0, 0, 2, 0, 2, 2, 0, 2, 2, 0, 2, 2, 1, 2, 2, 1, 2, 2, 1, 2, 2, 0, 1, 1, 0, 1, 1, 0, 1, 1, 2, 2, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 2, 2, 2}
+  {0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 2, 0, 0, 2, 0, 0, 2, 0, 2, 2, 0, 2, 2, 0, 2, 2, 1, 2, 2, 1, 2, 2, 1, 2, 2, 0, 1, 1, 0, 1, 1, 0, 1, 1, 2, 2, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 2, 2, 2},
+  // (a + b + c + d)
+  {0, 1, 2, 3},
+  // (a + b + c + d) ^ 2
+  {0, 0, 0, 1, 0, 1, 0, 2, 0, 2, 0, 3, 0, 3, 1, 1, 1, 2, 1, 2, 1, 2, 2, 2, 2, 3, 2, 3, 1, 3, 1, 3, 3, 3}
 };
 const int pattern_lengths[num_patterns] = {
   2,
@@ -57,7 +61,9 @@ const int pattern_lengths[num_patterns] = {
   64,
   3,
   14,
-  81
+  81,
+  4,
+  34
 };
 
 void setup() {
@@ -83,6 +89,8 @@ void loop() {
           b(x, y);
         } else if (patternValue == 2) {
           c(x, y);
+        } else if (patternValue == 3) {
+          d(x, y);
         }
 
         // Increment pattern index.
@@ -112,5 +120,10 @@ void b(int x, int y) {
 
 void c(int x, int y) {
   tft.drawLine(x, y, x + tile_size, y + tile_size, tile_drawing_color);
+  delay(tile_drawing_delay);
+}
+
+void d(int x, int y) {
+  tft.drawLine(x + tile_size, y, x, y + tile_size, tile_drawing_color);
   delay(tile_drawing_delay);
 }
