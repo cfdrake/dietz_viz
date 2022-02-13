@@ -30,7 +30,6 @@ Adafruit_ILI9341 tft = Adafruit_ILI9341(10, 9);
 const int tile_size = 16;
 const int tile_line_spacing = 4;
 const int tile_drawing_delay = 10;  // ms (for each line in pattern)
-const int tile_drawing_color = ILI9341_WHITE;
 const int pattern_drawing_delay = (1000 * 15);  // ms (for each finished pattern)
 
 // Pattern data.
@@ -108,24 +107,24 @@ void loop() {
 
 void a(int x, int y) {
   for (int i = 0; i < tile_size; i += tile_line_spacing) {
-    tft.drawLine(x, y + i, x + tile_size, y + i, tile_drawing_color);
+    tft.drawLine(x, y + i, x + tile_size, y + i, ILI9341_MAGENTA);
     delay(tile_drawing_delay);
   }
 }
 
 void b(int x, int y) {
   for (int i = 0; i < tile_size; i += tile_line_spacing) {
-    tft.drawLine(x + i, y, x + i, y + tile_size, tile_drawing_color);
+    tft.drawLine(x + i, y, x + i, y + tile_size, ILI9341_BLUE);
     delay(tile_drawing_delay);
   }
 }
 
 void c(int x, int y) {
-  tft.drawLine(x, y, x + tile_size, y + tile_size, tile_drawing_color);
+  tft.drawLine(x, y, x + tile_size, y + tile_size, ILI9341_YELLOW);
   delay(tile_drawing_delay);
 }
 
 void d(int x, int y) {
-  tft.drawLine(x + tile_size, y, x, y + tile_size, tile_drawing_color);
+  tft.drawLine(x + tile_size, y, x, y + tile_size, ILI9341_CYAN);
   delay(tile_drawing_delay);
 }
